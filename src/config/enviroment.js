@@ -13,7 +13,7 @@ const ENVIROMENT = {
     SECRET_KEY: process.env.SECRET_KEY,
     FRONTEND_URL: process.env.FRONTEND_URL,
     BACKEND_URL: process.env.BACKEND_URL,
-    MONGO_DB_CONNECTION_STR: process.env.MONGO_DB_CONNECTION_STR,
+    MONGO_URI: process.env.MONGO_URI,
     MONGO_DB_DATABASE: process.env.MONGO_DB_DATABASE
 }
 

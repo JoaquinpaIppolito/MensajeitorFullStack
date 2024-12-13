@@ -7,7 +7,7 @@ import ENVIROMENT from "./enviroment.js"
 
 
 
-const MONGO_URL = ENVIROMENT.MONGO_DB_CONNECTION_STR + '/' + ENVIROMENT.MONGO_DB_DATABASE
+const MONGO_URL = ENVIROMENT.MONGO_URI
 
 //.connect se utiliza para establecer una conexion con la DB
 //Recibe un connection_string (url de la DB) y un objeto de configuracion
