@@ -19,7 +19,7 @@ app.use(customCorsMiddleware)
 //Middleware que habilita las consultas de origen cruzado
 app.use(cors())
 
-app.use(express.json())
+app.use(express.json({ limit: '2mb' }));
 
 app.use('/api/status', statusRouter)
 app.use('/api/auth', authRouter)
