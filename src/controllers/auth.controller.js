@@ -111,7 +111,7 @@ export const registerController = async (req, res) => {
 
         const userCreated = new User({
             name: registerConfig.name.value,
-            email: registerConfig.email.value,
+            email: registerConfig.email.value.toLowerCase(),
             password: hashedPassword,
             verficationToken: ''
         })
@@ -175,7 +175,8 @@ export const loginController = async (req, res) => {
     try {
         const { email, password } = req.body
 
-        const user = await User.findOne({ email: email })
+        const emailNormalized = email.toLowerCase()
+        const user = await User.findOne({ email: emailNormalized })
         
         if(!user){
             return res.status(404).json({ ok: false, message: 'El email no esta registrado!' })
@@ -233,7 +234,8 @@ export const loginController = async (req, res) => {
 export const forgotPasswordController = async (req, res) => {
     try {
         const { email } = req.body
-        const user = await User.findOne({ email: email })
+        const emailNormalized = email.toLowerCase()
+        const user = await User.findOne({ email: emailNormalized })
 
         if (!user) {
             return res.status(404).json({ ok: false, message: 'Usuario no encontrado' })
@@ -292,7 +294,7 @@ export const recoveryPasswordController = async (req, res) => {
         const { new_password, reset_token } = req.body
 
         const { email } = jwt.verify(reset_token, ENVIROMENT.SECRET_KEY)
-        const usuarioEncontrado = await User.findOne({ email: email })
+        const usuarioEncontrado = await User.findOne({ email: email.toLowerCase() })
 
         if (!usuarioEncontrado) {
             return res.status(404).json({ ok: false, message: 'Usuario no encontrado' })
