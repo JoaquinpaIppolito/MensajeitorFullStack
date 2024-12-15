@@ -13,8 +13,9 @@ const contactSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    imagen: {
+    thumbnail: {
         type: String,
+        default:''
     },
     active: {
         type: Boolean,
